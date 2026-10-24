@@ -53,11 +53,16 @@ class SoundEngine {
         localStorage.setItem(STORAGE_KEY, String(val));
       } catch {}
     }
-    // Always re-initialize/resume the AudioContext so it's ready for playClick/playNeedleDrop/etc.
-    this.initContext();
     if (this.enabled) {
+      // Enabling: make sure the AudioContext exists and is running
+      this.initContext();
       // Play a subtle click when enabling so the user gets immediate feedback
       try { this.playClick(0.08, 600); } catch {}
+    } else {
+      // Disabling: suspend the AudioContext so no new sounds can play
+      if (this.ctx && this.ctx.state === "running") {
+        this.ctx.suspend().catch(() => {});
+      }
     }
     this.listeners.forEach((fn) => fn(this.enabled));
     return this.enabled;

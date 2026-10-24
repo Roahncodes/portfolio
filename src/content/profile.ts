@@ -250,6 +250,6 @@ export const navItems = [
   { label: "Artist home", href: "/" },
   { label: "Curiosity", href: "/curiosity" },
   { label: "GitHub projects", href: "/projects" },
-  { label: "Linear notes", href: "/notes" }
+  { label: "Linear notes", href: "/notes" } // corrected from Liner
   { label: "Resume", href: "/resume" },
 ] as const;

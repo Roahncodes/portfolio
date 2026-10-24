@@ -1,0 +1,31 @@
+{
+  "name": "on-repeat-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Spotify-flavoured portfolio for Rohan Dabhade — albums, tracks and liner notes instead of a plain project list.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "resume": "node scripts/resume-check.mjs",
+    "resume:pdf": "node scripts/make-resume-pdf.mjs public/resume/rohan-dabhade-resume.png public/resume/rohan-dabhade-resume.pdf \"Rohan Dabhade - Resume\""
+  },
+  "dependencies": {
+    "mongodb": "^7.7.0",
+    "next": "16.4.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.3",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5.7.0"
+  }
+}

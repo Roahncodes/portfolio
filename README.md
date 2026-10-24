@@ -406,3 +406,4 @@ known benign warnings, and rollback — written to be started cold.
 - The canvas effects need `requestAnimationFrame`, which a background or hidden tab
   suspends. They degrade to that still frame — open the site in a real browser window to
   see them move.
+"# portfolio" 

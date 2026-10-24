@@ -60,7 +60,7 @@ const TRACKS: TrackItem[] = [
   },
   {
     index: "06",
-    title: "Liner Notes & Creds",
+    title: "Linear Notes & Creds",
     path: "/notes",
     badge: "NOTES",
   },

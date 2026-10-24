@@ -86,7 +86,7 @@ const undertow: SoundtrackTrack = {
   year: 2019,
   mood: "Sombre, ebbing piano and strings",
   page: "/notes",
-  pageLabel: "Liner notes",
+  pageLabel: "Linear notes",
   artistUrl: "https://www.scottbuckley.com.au/library/undertow/",
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Scott_Buckley_-_Undertow.oga",
 };

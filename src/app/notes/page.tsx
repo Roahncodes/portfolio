@@ -14,7 +14,7 @@ import { Reveal } from "@/components/reveal";
 import { certifications, hackathons, profile } from "@/content/profile";
 
 export const metadata: Metadata = {
-  title: "Liner notes",
+  title: "Linear notes",
   description:
     "Short notes from the sleeve: certifications, hackathons, and the things that didn't fit anywhere else.",
 };
@@ -73,7 +73,7 @@ export default function NotesPage() {
   return (
     <div className="page">
       <header className="page-head">
-        <span className="mono eyebrow">Liner notes / {profile.name}</span>
+        <span className="mono eyebrow">Linear notes / {profile.name}</span>
       </header>
 
       <section style={{ maxWidth: "58ch" }}>

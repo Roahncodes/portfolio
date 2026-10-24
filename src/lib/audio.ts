@@ -42,7 +42,8 @@ class SoundEngine {
   }
 
   public toggle(): boolean {
-    return this.setEnabled(!this.enabled);
+    const newEnabled = !this.enabled;
+    return this.setEnabled(newEnabled);
   }
 
   public setEnabled(val: boolean): boolean {
@@ -52,9 +53,11 @@ class SoundEngine {
         localStorage.setItem(STORAGE_KEY, String(val));
       } catch {}
     }
+    // Always re-initialize/resume the AudioContext so it's ready for playClick/playNeedleDrop/etc.
+    this.initContext();
     if (this.enabled) {
-      this.initContext();
-      this.playClick(0.08, 600);
+      // Play a subtle click when enabling so the user gets immediate feedback
+      try { this.playClick(0.08, 600); } catch {}
     }
     this.listeners.forEach((fn) => fn(this.enabled));
     return this.enabled;

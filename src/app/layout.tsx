@@ -5,6 +5,7 @@ import { AmbientGlow } from "@/components/ambient-glow";
 import { PlayerDock } from "@/components/player-dock";
 import { SideRail } from "@/components/side-rail";
 import { profile } from "@/content/profile";
+import { siteUrl } from "@/lib/site";
 import { THEME_BOOTSTRAP, THEME_COLORS, DEFAULT_THEME } from "@/lib/theme";
 
 import "./globals.css";
@@ -22,8 +23,6 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   weight: ["400", "500", "600"],
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

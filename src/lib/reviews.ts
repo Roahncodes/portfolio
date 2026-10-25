@@ -46,7 +46,12 @@ export class ReviewsNotConfiguredError extends Error {
   }
 }
 
-export { ReviewValidationError } from "./review-validation";
+export class ReviewValidationError extends Error {
+  constructor(message = "Invalid review submission.") {
+    super(message);
+    this.name = "ReviewValidationError";
+  }
+}
 
 /**
  * A failed connection must not be cached forever: a cold Atlas cluster or a
@@ -152,6 +157,38 @@ function optionalText(value: unknown, label: string, max: number): string {
   }
 
   return text;
+}
+
+function parseReviewInput(input: unknown): ReviewInput {
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    throw new ReviewValidationError("Send the review as a JSON object.");
+  }
+
+  const record = input as Record<string, unknown>;
+
+  const rating = record.rating;
+  if (
+    typeof rating !== "string" ||
+    !REVIEW_RATINGS.includes(rating as ReviewRating)
+  ) {
+    throw new ReviewValidationError("Choose one of the four review stamps.");
+  }
+
+  const color = record.color;
+  if (
+    typeof color !== "string" ||
+    !REVIEW_COLORS.some((option) => option.hex === color)
+  ) {
+    throw new ReviewValidationError("Choose one of the available vinyl markers.");
+  }
+
+  return {
+    name: normalizeText(record.name, "Name", 1, REVIEW_LIMITS.name),
+    role: optionalText(record.role, "Role", REVIEW_LIMITS.role),
+    rating: rating as ReviewRating,
+    comment: normalizeText(record.comment, "Review", 1, REVIEW_LIMITS.comment),
+    color,
+  };
 }
 
 function toReview(doc: ReviewDocument): Review | null {

@@ -1,4 +1,13 @@
-@import "tailwindcss";
+/*
+ * Theme tokens and utilities only.
+ *
+ * This stylesheet is hand-authored from top to bottom; Tailwind's preflight
+ * reset is deliberately left out so the base rendering stays exactly as
+ * designed. The utilities are still needed for the handful of layout helpers
+ * used in components (`hidden`, `md:inline`, ...).
+ */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 /* ═══════════════════════════════════════════════════════════════════════════
    "on repeat." — design tokens

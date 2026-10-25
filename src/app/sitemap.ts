@@ -1,11 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { getAlbumSlugs } from "@/content/albums";
-
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:3000").replace(
-  /\/$/,
-  ""
-);
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

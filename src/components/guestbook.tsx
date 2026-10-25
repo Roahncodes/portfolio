@@ -178,10 +178,10 @@ export function GuestbookSection() {
   const canSign = loadState === "ready";
   const signLabel =
     loadState === "unconfigured"
-      ? "Guestbook Not Connected"
+      ? "Guestbook unavailable"
       : isFormOpen
-        ? "Close Sign Form"
-        : "Sign the Guestbook";
+        ? "Close form"
+        : "Write a review";
 
   return (
     <section className="section guestbook-section" id="guestbook">
@@ -189,15 +189,15 @@ export function GuestbookSection() {
         <div>
           <span className="mono-sm eyebrow-accent">
             <GuestbookIcon size={13} />
-            I WAS HERE · VISITOR GUESTBOOK
+            GUESTBOOK
           </span>
           <h2 className="display display-lg" style={{ marginTop: 8 }}>
-            Drop off a review.
+            Leave a review.
           </h2>
         </div>
-        <p className="body-copy" style={{ margin: 0, maxWidth: "42ch" }}>
-          Sign the sleeve with a review, feedback, or a quick hello. Every note is read
-          and approved before it goes up.
+        <p className="body-copy" style={{ margin: 0, maxWidth: "46ch" }}>
+          If you have worked with me, hired me, or just spent some time on the site, I
+          would like to hear what you think. I read every note before it goes up.
         </p>
       </div>
 
@@ -207,7 +207,7 @@ export function GuestbookSection() {
           <span className="guestbook-stat-val">
             {loadState === "ready" ? entries.length : "—"}
           </span>
-          <span className="guestbook-stat-lbl">Signatures</span>
+          <span className="guestbook-stat-lbl">Reviews</span>
         </div>
         <div className="guestbook-stat-item">
           <div className="guestbook-stars">
@@ -217,11 +217,7 @@ export function GuestbookSection() {
             <StarIcon size={12} filled />
             <StarIcon size={12} filled />
           </div>
-          <span className="guestbook-stat-lbl">Read &amp; approved</span>
-        </div>
-        <div className="guestbook-stat-item">
-          <span className="mono-sm text-dim">● TAPE LOG 2026</span>
-          <span className="guestbook-stat-lbl">Master Vinyl Board</span>
+          <span className="guestbook-stat-lbl">Read before posting</span>
         </div>
 
         <button
@@ -230,7 +226,7 @@ export function GuestbookSection() {
           disabled={!canSign}
           title={
             canSign
-              ? "Leave a review for the guestbook"
+              ? "Leave a review"
               : "The guestbook is not accepting reviews right now"
           }
           onClick={() => {
@@ -252,8 +248,8 @@ export function GuestbookSection() {
         <div className="guestbook-notice" role="status" aria-live="polite">
           <CheckIcon size={15} />
           <p>
-            <strong>Needle dropped.</strong> Your review is in the queue — it appears
-            here once it is approved.
+            <strong>Thanks.</strong> Your review is in. I will publish it here once I
+            have read it.
           </p>
         </div>
       )}
@@ -263,22 +259,22 @@ export function GuestbookSection() {
         <form className="guestbook-form" onSubmit={handleSubmit}>
           <div className="guestbook-form-header">
             <span className="mono-sm" style={{ color: "var(--accent)" }}>
-              ✍️ ADD YOUR SIGNATURE &amp; REVIEW
+              ADD YOUR REVIEW
             </span>
-            <span className="mono-sm text-dim">STEREO ENGRAVING</span>
+            <span className="mono-sm text-dim">APPEARS AFTER APPROVAL</span>
           </div>
 
           <div className="guestbook-form-grid">
             <div className="form-group">
               <label className="mono-sm form-label" htmlFor="gb-name">
-                Name / Handle *
+                Name *
               </label>
               <input
                 id="gb-name"
                 type="text"
                 required
                 maxLength={REVIEW_LIMITS.name}
-                placeholder="e.g. Alex or @dev_alex"
+                placeholder="Your name"
                 className="form-input"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
@@ -287,13 +283,13 @@ export function GuestbookSection() {
 
             <div className="form-group">
               <label className="mono-sm form-label" htmlFor="gb-role">
-                Role / Affiliation / City (Optional)
+                Role or city (optional)
               </label>
               <input
                 id="gb-role"
                 type="text"
                 maxLength={REVIEW_LIMITS.role}
-                placeholder="e.g. ML Engineer, Recruiter, Bangalore"
+                placeholder="e.g. ML engineer, recruiter, Bangalore"
                 className="form-input"
                 value={role}
                 onChange={(event) => setRole(event.target.value)}
@@ -304,7 +300,7 @@ export function GuestbookSection() {
           {/* Tape Rating Selection */}
           <div className="form-group" style={{ marginTop: 14 }}>
             <label className="mono-sm form-label">
-              Your Review Rating / Stamp *
+              How was it? *
             </label>
             <div className="guestbook-rating-options">
               {(
@@ -322,7 +318,6 @@ export function GuestbookSection() {
                       setRating(key);
                     }}
                   >
-                    <span>{config.icon}</span>
                     <span>{config.label}</span>
                   </button>
                 );
@@ -333,14 +328,14 @@ export function GuestbookSection() {
           {/* Comment / Review Textarea */}
           <div className="form-group" style={{ marginTop: 14 }}>
             <label className="mono-sm form-label" htmlFor="gb-comment">
-              Your Review / Note *
+              Your review *
             </label>
             <textarea
               id="gb-comment"
               required
               rows={3}
               maxLength={REVIEW_LIMITS.comment}
-              placeholder="What caught your eye? Loved the JetNet architecture? The player dock? Drop your review here..."
+              placeholder="What did you think of the site, or of working together?"
               className="form-input form-textarea"
               value={comment}
               onChange={(event) => setComment(event.target.value)}
@@ -351,7 +346,7 @@ export function GuestbookSection() {
           <div className="guestbook-form-footer">
             <div className="color-picker-group">
               <span className="mono-sm form-label" style={{ margin: 0 }}>
-                Vinyl Marker:
+                Accent colour:
               </span>
               <div className="color-swatches">
                 {REVIEW_COLORS.map((pal) => (
@@ -384,9 +379,7 @@ export function GuestbookSection() {
                 disabled={submitState === "submitting"}
               >
                 <DiscIcon size={14} />
-                {submitState === "submitting"
-                  ? "Engraving…"
-                  : "Drop Needle & Sign"}
+                {submitState === "submitting" ? "Posting…" : "Post review"}
               </button>
             </div>
           </div>
@@ -401,19 +394,19 @@ export function GuestbookSection() {
 
       {loadState === "loading" && (
         <div className="guestbook-state" role="status" aria-live="polite">
-          Loading the board…
+          Loading reviews…
         </div>
       )}
 
       {loadState === "unconfigured" && (
         <div className="guestbook-state" role="status" aria-live="polite">
-          The guestbook is being set up. Check back soon.
+          The guestbook is not connected yet.
         </div>
       )}
 
       {loadState === "error" && (
         <div className="guestbook-state" role="status" aria-live="polite">
-          <span>The guestbook is offline right now.</span>
+          <span>Could not load the guestbook.</span>
           <button
             type="button"
             className="btn btn-ghost"
@@ -438,7 +431,7 @@ export function GuestbookSection() {
                   setSelectedFilter("all");
                 }}
               >
-                All Signs ({entries.length})
+                All reviews ({entries.length})
               </button>
               {(Object.keys(REVIEW_RATING_META) as ReviewRating[]).map((key) => {
                 const count = entries.filter((entry) => entry.rating === key).length;
@@ -453,7 +446,6 @@ export function GuestbookSection() {
                       setSelectedFilter(key);
                     }}
                   >
-                    <span>{REVIEW_RATING_META[key].icon}</span>
                     <span>{REVIEW_RATING_META[key].label}</span>
                     <span className="filter-count">({count})</span>
                   </button>
@@ -505,7 +497,6 @@ export function GuestbookSection() {
                       </div>
 
                       <div className="guestbook-rating-badge">
-                        <span>{config.icon}</span>
                         <span className="mono-sm">{config.label}</span>
                       </div>
                     </div>
@@ -533,8 +524,8 @@ export function GuestbookSection() {
 
       {loadState === "ready" && entries.length === 0 && (
         <div className="guestbook-empty">
-          <strong>The sleeve is blank — be the first to sign it.</strong>
-          <span>Reviews appear here after they are approved.</span>
+          <strong>No reviews yet.</strong>
+          <span>Yours would be the first one here.</span>
         </div>
       )}
     </section>

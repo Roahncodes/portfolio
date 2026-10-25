@@ -14,14 +14,11 @@ export const REVIEW_RATINGS = [
 
 export type ReviewRating = (typeof REVIEW_RATINGS)[number];
 
-export const REVIEW_RATING_META: Record<
-  ReviewRating,
-  { label: string; icon: string }
-> = {
-  masterpiece: { label: "Certified Masterpiece", icon: "🏆" },
-  "heavy-repeat": { label: "On Heavy Repeat", icon: "🔁" },
-  "deep-cut": { label: "Deep Cut", icon: "⚡" },
-  "clean-execution": { label: "Clean Execution", icon: "🎯" },
+export const REVIEW_RATING_META: Record<ReviewRating, { label: string }> = {
+  masterpiece: { label: "Certified Masterpiece" },
+  "heavy-repeat": { label: "On Heavy Repeat" },
+  "deep-cut": { label: "Deep Cut" },
+  "clean-execution": { label: "Clean Execution" },
 };
 
 export const REVIEW_COLORS = [

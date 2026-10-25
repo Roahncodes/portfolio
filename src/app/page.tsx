@@ -104,7 +104,7 @@ export default async function ArtistHome() {
 
           <div style={{ marginTop: 26, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link href="/curiosity" className="btn btn-ghost">
-              Read the liner notes
+              Read the linear notes
             </Link>
             <Link href="/projects" className="btn btn-ghost">
               Browse the discography

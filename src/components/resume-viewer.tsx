@@ -38,7 +38,7 @@ function useMediaQuery(query: string) {
 
 const ATS_RESUME_TEXT = `================================================================================
 ROHAN DABHADE
-${profile.location} | ${profile.phone} | ${profile.email}
+${profile.location} | ${profile.email}
 ${profile.linkedin} | ${profile.github}
 ================================================================================
 

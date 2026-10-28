@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon, MailIcon, MapPinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/icons";
 import { socials, type Social } from "@/content/profile";
 
 /**
@@ -10,7 +10,6 @@ import { socials, type Social } from "@/content/profile";
 export function SocialIcon({ name, size = 15 }: { name: Social["icon"]; size?: number }) {
   if (name === "github") return <GithubIcon size={size} />;
   if (name === "linkedin") return <LinkedinIcon size={size} />;
-  if (name === "phone") return <MapPinIcon size={size} />;
   return <MailIcon size={size} />;
 }
 

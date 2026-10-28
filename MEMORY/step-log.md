@@ -36,7 +36,7 @@ Notes:
      (`Dice_roller.py`, `Project1.py`, `Project2.py`, `Timer.py`, `encrypt.py`, `main.py`
      = slot machine, 3×3 grid, bet validation).
 - Resume facts extracted verbatim (used by step 02):
-  - Name Rohan Dabhade, +91 951 2693 422, rohandabhade58@gmail.com
+  - Name Rohan Dabhade, rohandabhade58@gmail.com
   - `linkedin.com/in/rohan-dabhade/`, `github.com/Roahncodes`
   - CS student at Jain University, Bangalore, Karnataka — expected graduation Sep 2028,
     current status second-year.

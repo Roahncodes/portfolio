@@ -48,7 +48,6 @@ export const profile = {
   availability: "Open to internships",
 
   email: "rohandabhade58@gmail.com",
-  phone: "+91 951 2693 422",
   linkedin: "https://www.linkedin.com/in/rohan-dabhade",
   github: "https://github.com/Roahncodes",
 
@@ -201,7 +200,7 @@ export const rotationStrip: string[] = [
  */
 export type Social = {
   key: string;
-  icon: "github" | "linkedin" | "mail" | "phone";
+  icon: "github" | "linkedin" | "mail";
   /** what the link reads as, e.g. `github.com/Roahncodes` */
   value: string;
   href: string;
@@ -235,14 +234,6 @@ export const socials: Social[] = [
     href: `mailto:${profile.email}`,
     note: "Best for internships, collaborations and anything with a deadline.",
     hero: true,
-  },
-  {
-    key: "Phone",
-    icon: "phone",
-    value: profile.phone,
-    href: `tel:${profile.phone.replace(/\s/g, "")}`,
-    note: "Reachable in Indian Standard Time, Bangalore.",
-    hero: false,
   },
 ];
 
